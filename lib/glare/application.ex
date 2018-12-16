@@ -9,9 +9,10 @@ defmodule Glare.Application do
     # List all child processes to be supervised
     children = [
       # Start the endpoint when the application starts
-      GlareWeb.Endpoint
+      GlareWeb.Endpoint,
       # Starts a worker by calling: Glare.Worker.start_link(arg)
       # {Glare.Worker, arg},
+      Glare.Executor
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
