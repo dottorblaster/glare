@@ -2,7 +2,7 @@ defmodule GlareWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", GlareWeb.RoomChannel
+  channel "tasks:update*", Glare.TasksChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
