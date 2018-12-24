@@ -9,7 +9,8 @@ defmodule Glare.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      aliases: aliases()
     ]
   end
 
@@ -39,6 +40,13 @@ defmodule Glare.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.1"},
       {:plug_cowboy, "~> 2.0"}
+    ]
+  end
+
+  defp aliases do
+    [
+      "check-formatted": ["format --check-formatted"],
+      "check-elm-formatted": ["cmd cd assets && npx elm-format --validate elm"]
     ]
   end
 end
