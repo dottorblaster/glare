@@ -7,6 +7,8 @@ jobs:
     - stage: "Check Elixir code format"
       script: mix format --check-formatted
     - stage: "Run tests"
+      before_script: mix deps.get
       script: mix test
     - stage: "Check Elm code format"
-      script: cd assets && npm install && npx elm-format 
+      before_script: npm install -g npx
+      script: cd assets && npm install && npx elm-format --validate elm
