@@ -7,6 +7,7 @@ defmodule GlareWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug BasicAuth, callback: &Glare.Auth.authenticate/3
   end
 
   pipeline :api do
