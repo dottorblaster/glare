@@ -17,6 +17,7 @@ defmodule GlareWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/tasks", TaskController, :render_tasks
   end
 
   # Other scopes may use custom stacks.
