@@ -1,3 +1,17 @@
 /* This file is for your main application css. */
 
-@import "./phoenix.css";
+/* @import "./phoenix.css"; */
+
+.container.glare-main-container {
+    margin-top: 1em;
+}
+
+.glare-task-command {
+    margin-top: 0.8em;
+}
+
+.glare-task-badge {
+    margin-top: 0.6em;
+    margin-right: 1em;
+    text-align: right;
+}
