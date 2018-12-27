@@ -1,4 +1,8 @@
 defmodule Glare.SirenWrapper do
+  @moduledoc """
+  A wrapper for Siren's executable.
+  """
+
   @command "siren"
   @sirenfile_path System.get_env("SIRENFILE_PATH")
 
