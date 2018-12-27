@@ -1,6 +1,10 @@
 defmodule Glare.Executor do
   use GenServer
 
+  @moduledoc """
+  A GenServer that executes Siren.
+  """
+
   def start_link(_) do
     GenServer.start_link(__MODULE__, %{}, name: :executor)
   end

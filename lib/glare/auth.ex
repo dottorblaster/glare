@@ -1,6 +1,10 @@
 defmodule Glare.Auth do
   import Plug.Conn
 
+  @moduledoc """
+  Authentication module. It basically manages runtime HTTP basic auth.
+  """
+
   @glare_username System.get_env("GLARE_USERNAME")
   @glare_password System.get_env("GLARE_PASSWORD")
 
