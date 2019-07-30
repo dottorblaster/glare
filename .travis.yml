@@ -8,7 +8,7 @@ script:
 - cd assets && npm install && npx elm-format --validate elm && npx webpack --mode
   production
 - cd .. && MIX_ENV=prod mix phx.digest
-- MIX_ENV=prod mix release
+- MIX_ENV=prod mix distillery.release
 deploy:
   provider: releases
   api_key:
