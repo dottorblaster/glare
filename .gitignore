@@ -44,3 +44,5 @@ npm-debug.log
 # Elm build shit
 elm-stuff
 
+.DS_Store
+

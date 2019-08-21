@@ -2,16 +2,23 @@
 
 /* @import "./phoenix.css"; */
 
-.container.glare-main-container {
-    margin-top: 1em;
+@import "./spectre.min.css";
+@import "./spectre-icons.min.css";
+@import "./spectre-exp.min.css";
+
+.task-card {
+    width: 24rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 0.8rem;
+    margin-right: 0.8rem;
+    box-shadow: 0 .25rem 1rem rgba(48,55,66,.15);
 }
 
-.glare-task-command {
-    margin-top: 0.8em;
+.status-chip {
+    float: right;
 }
 
-.glare-task-badge {
-    margin-top: 0.6em;
-    margin-right: 1em;
-    text-align: right;
+.glare-code {
+    overflow-x: auto;
 }
