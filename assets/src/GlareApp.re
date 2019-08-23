@@ -1,40 +1,13 @@
 open Types;
+open State;
 
 [@react.component]
 let make = () => {
-  let (state, dispatch) =
-    React.useReducer(
-      (state, action) =>
-        switch (action) {
-        | StartFetching => {...state, fetching: true}
-        | StopFetching => {...state, fetching: false}
-        | HasError => {...state, error: true}
-        | ClearErrors => {...state, error: false}
-        | SetChecks(checks) => {...state, checks}
-        },
-      {error: false, fetching: false, checks: []},
-    );
+  let (state, dispatch) = React.useReducer(reducer, defaultState);
 
   React.useEffect0(() => {
     let timerId =
-      Js.Global.setInterval(
-        () => {
-          dispatch(StartFetching);
-          let _ =
-            Js.Promise.(
-              Fetch.fetch("/tasks")
-              |> then_(Fetch.Response.json)
-              |> then_(res => {
-                   let {tasks} = Decode.response(res);
-                   dispatch(StopFetching);
-                   dispatch(SetChecks(tasks));
-                   resolve(res);
-                 })
-            );
-          ();
-        },
-        10000,
-      );
+      Js.Global.setInterval(Timer.dispatchingTimer(dispatch), 10000);
     Some(() => Js.Global.clearInterval(timerId));
   });
 
