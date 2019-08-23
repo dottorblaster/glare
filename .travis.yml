@@ -5,8 +5,7 @@ script:
 - npm install -g npx
 - mix format --check-formatted
 - mix test
-- cd assets && npm install && npx elm-format --validate elm && npx webpack --mode
-  production
+- cd assets && npm install && npm run build && npm run webpack:production
 - cd .. && MIX_ENV=prod mix phx.digest
 - MIX_ENV=prod mix distillery.release
 deploy:

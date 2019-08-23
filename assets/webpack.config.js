@@ -1,49 +1,40 @@
 const path = require('path');
-const glob = require('glob');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-module.exports = (env, options) => ({
+const outputDir = path.join(__dirname, '../priv/static/js');
+const isProd = process.env.NODE_ENV === 'production';
+
+module.exports = {
   optimization: {
     minimizer: [
-      new UglifyJsPlugin({ cache: true, parallel: true, sourceMap: false }),
-      new OptimizeCSSAssetsPlugin({})
-    ]
+      new OptimizeCSSAssetsPlugin({}),
+    ],
   },
-  entry: {
-      './js/app.js': ['./js/app.js'].concat(glob.sync('./vendor/**/*.js'))
-  },
+  entry: './src/Index.bs.js',
+  mode: isProd ? 'production' : 'development',
   output: {
-    filename: 'app.js',
-    path: path.resolve(__dirname, '../priv/static/js')
+    path: outputDir,
+    filename: 'app.js'
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader'
-        }
-      },
-      {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader']
       },
-      {
-        test: /\.elm$/,
-        exclude: [/elm-stuff/, /node_modules/],
-        loader: 'elm-webpack-loader',
-        options: {
-          debug: true
-        }
-      }
-    ]
+    ],
   },
   plugins: [
     new MiniCssExtractPlugin({ filename: '../css/app.css' }),
-    new CopyWebpackPlugin([{ from: 'static/', to: '../' }])
-  ]
-});
+    new CopyWebpackPlugin([{ from: 'static/', to: '../' }]),
+  ],
+  devServer: {
+    compress: true,
+    contentBase: outputDir,
+    port: process.env.PORT || 8000,
+    historyApiFallback: true
+  }
+};
