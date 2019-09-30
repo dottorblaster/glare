@@ -23,7 +23,7 @@
     "mini-css-extract-plugin": "^0.8.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "react": "^16.8.1",
-    "react-dom": "^16.8.1",
+    "react-dom": "^16.10.1",
     "reason-react": ">=0.7.0",
     "spectre.css": "^0.5.8"
   },
