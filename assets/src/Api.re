@@ -1,2 +1,2 @@
 let getTasks =
-  Js.Promise.(Fetch.fetch("/tasks") |> then_(Fetch.Response.json));
+  Js.Promise.(Fetch.fetch("/tasks") |> then_(Fetch.Response.json) |> then_(resolve));

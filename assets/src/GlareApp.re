@@ -6,6 +6,7 @@ let make = () => {
   let (state, dispatch) = React.useReducer(reducer, defaultState);
 
   React.useEffect0(() => {
+    Timer.dispatchingTimer(dispatch, ());
     let timerId =
       Js.Global.setInterval(Timer.dispatchingTimer(dispatch), 10000);
     Some(() => Js.Global.clearInterval(timerId));
