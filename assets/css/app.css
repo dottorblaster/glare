@@ -13,6 +13,7 @@
     margin-left: 0.8rem;
     margin-right: 0.8rem;
     box-shadow: 0 .25rem 1rem rgba(48,55,66,.15);
+    border-radius: 5px;
 }
 
 .status-chip {
