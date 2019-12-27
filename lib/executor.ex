@@ -1,32 +1,32 @@
 defmodule Glare.Executor do
   use GenServer
+  require Logger
 
   @moduledoc """
   A GenServer that executes Siren.
   """
 
   def start_link(_) do
-    GenServer.start_link(__MODULE__, %{}, name: :executor)
+    GenServer.start_link(__MODULE__, %{"tasks" => []}, name: :executor)
   end
 
   def init(state) do
-    # This is for when we'll implement websocket.
-    # schedule_execution()
+    schedule_execution(1)
     {:ok, state}
   end
 
   def handle_info(:work, state) do
-    Glare.TasksChannel.broadcast(%{tasks: "topkek"})
-    schedule_execution()
-    {:noreply, state}
+    %{"tasks" => task_list} = Glare.SirenWrapper.run_siren()
+    schedule_execution(30)
+    Logger.info("Tasks list refreshed successfully")
+    {:noreply, %{"tasks" => task_list}}
   end
 
   def handle_call(:tasks, _from, state) do
-    command_output = Glare.SirenWrapper.run_siren()
-    {:reply, command_output, state}
+    {:reply, state, state}
   end
 
-  defp schedule_execution() do
-    Process.send_after(self(), :work, 30 * 1000)
+  defp schedule_execution(seconds) do
+    Process.send_after(self(), :work, seconds * 1000)
   end
 end
