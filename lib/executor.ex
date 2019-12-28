@@ -5,10 +5,10 @@ defmodule Glare.Executor do
   @moduledoc """
   A GenServer that executes Siren.
   """
-  
+
   @initial_state %{
     "tasks" => [],
-    "last_execution" => DateTime.utc_now() |> DateTime.to_string 
+    "last_execution" => DateTime.utc_now() |> DateTime.to_string()
   }
 
   def start_link(_) do
@@ -42,5 +42,5 @@ defmodule Glare.Executor do
     Process.send_after(self(), :work, seconds * 1000)
   end
 
-  defp string_now, do: DateTime.utc_now |> DateTime.to_string
+  defp string_now, do: DateTime.utc_now() |> DateTime.to_string()
 end
