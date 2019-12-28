@@ -1,2 +1,4 @@
+let tasksEndpoint = "/tasks";
+
 let getTasks =
-  Js.Promise.(Fetch.fetch("/tasks") |> then_(Fetch.Response.json) |> then_(resolve));
+  Fetch.fetch("/tasks") |> Js.Promise.then_(Fetch.Response.json);
