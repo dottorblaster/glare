@@ -49,8 +49,8 @@ defmodule Glare.MixProject do
   defp aliases do
     [
       "check-formatted": ["format --check-formatted"],
-      "check-elm-formatted": ["cmd cd assets && npx elm-format --validate elm"],
-      "format-elm": ["cmd cd assets && npx elm-format elm"]
+      "reason:format": ["cmd cd assets && npm run-script re:format"],
+      "reason:build": ["cmd cd assets && npm run-script build"]
     ]
   end
 end
