@@ -41,7 +41,7 @@ defmodule Glare.MixProject do
       {:jason, "~> 1.1"},
       {:plug_cowboy, "~> 2.0"},
       {:basic_auth, "~> 2.2.2"},
-      {:credo, "~> 1.3.0", only: [:dev, :test], runtime: false},
+      {:credo, "~> 1.4.0", only: [:dev, :test], runtime: false},
       {:distillery, "~> 2.0"}
     ]
   end
