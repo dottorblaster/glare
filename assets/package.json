@@ -24,7 +24,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "reason-react": ">=0.7.0",
+    "reason-react": ">=0.7.1",
     "spectre.css": "^0.5.8"
   },
   "devDependencies": {
