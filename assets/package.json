@@ -25,7 +25,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "reason-react": ">=0.7.1",
-    "spectre.css": "^0.5.8"
+    "spectre.css": "^0.5.9"
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",
