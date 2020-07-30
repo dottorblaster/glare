@@ -19,7 +19,7 @@
   "dependencies": {
     "@glennsl/bs-json": "^5.0.2",
     "bs-fetch": "^0.6.2",
-    "css-loader": "^4.0.0",
+    "css-loader": "^4.1.0",
     "mini-css-extract-plugin": "^0.9.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "react": "^16.13.1",
